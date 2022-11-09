@@ -1,5 +1,5 @@
 import pgPromise from "pg-promise";
-import Card from "../entity/Card";
+import Card from "../domain/entity/Card";
 
 export default class CardService {
 

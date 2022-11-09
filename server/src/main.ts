@@ -1,13 +1,16 @@
 import express from "express";
-import pgp from "pg-promise";
+import PgPromiseConnection from "./infra/database/PgPromiseConnection";
+import BoardRepositoryDatabase from "./infra/repository/BoardRepositoryDatabase";
 import BoardService from "./service/BoardService";
 import CardService from "./service/CardService";
 import ColumnService from "./service/ColumnService";
 
 const app = express();
+const connection = new PgPromiseConnection();
+const boardRepository = new BoardRepositoryDatabase(connection);
 
 app.get("/boards", async function (req, res) {
-    const boardService = new BoardService();
+    const boardService = new BoardService(boardRepository);
     const boards = await boardService.getBoards();
     res.json(boards);
 });

@@ -1,5 +1,5 @@
 import pgPromise from "pg-promise";
-import Column from "../entity/Column";
+import Column from "../domain/entity/Column";
 
 export default class ColumnService {
 
