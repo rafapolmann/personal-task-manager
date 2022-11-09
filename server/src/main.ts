@@ -1,6 +1,7 @@
 import express from "express";
 import PgPromiseConnection from "./infra/database/PgPromiseConnection";
 import BoardRepositoryDatabase from "./infra/repository/BoardRepositoryDatabase";
+import CardRepositoryDatabase from "./infra/repository/CardRepositoryDatabase";
 import ColumnRepositoryDatabase from "./infra/repository/ColumnRepositoryDatabase";
 import BoardService from "./service/BoardService";
 import CardService from "./service/CardService";
@@ -10,6 +11,7 @@ const app = express();
 const connection = new PgPromiseConnection();
 const boardRepository = new BoardRepositoryDatabase(connection);
 const columnRepository = new ColumnRepositoryDatabase(connection);
+const cardRepository = new CardRepositoryDatabase(connection);
 
 app.get("/boards", async function (req, res) {
     const boardService = new BoardService(boardRepository);
@@ -24,7 +26,7 @@ app.get("/boards/:idBoard/columns", async function (req, res) {
 });
 
 app.get("/boards/:idBoard/columns/:idColumn/cards", async function (req, res) {
-    const cardService = new CardService();
+    const cardService = new CardService(cardRepository);
     const cards = await cardService.getCards(parseInt(req.params.idColumn));
     res.json(cards);
 });
