@@ -10,8 +10,9 @@ const data: { board: Board | undefined } = reactive({ board: undefined });
 onMounted(async () => {
   const boarService = inject("boardService") as BoardService;
   const board = await boarService.getBoard(1);
-  console.log("Teste");
+
   board.on("addColumn", async function (event: DomainEvent) {
+    console.log(event.data);
     await boarService.saveColumn(event.data);
   });
   data.board = board;
@@ -23,5 +24,4 @@ onMounted(async () => {
 </template>
 
 <style scoped>
-
 </style>

@@ -6,8 +6,8 @@ let columnName = ref("");
 
 <template>
     <div class="column new-column">
-        <input type="text" v-model="columnName" />
-        <button v-on:click="board?.addColumn(columnName, true)">Add</button>
+        <input class="new-column-input" type="text" v-model="columnName" />
+        <button class="new-column-add" v-on:click="board?.addColumn(columnName, true)">Add</button>
     </div>
 </template>
 

@@ -4,7 +4,7 @@ import CardComponentVue from "../src/components/CardComponent.vue";
 
 
 test("Deve testar o column component", async function () {
-    const board = new Board("Projeto 1");
+    const board = new Board(1, "Projeto 1");
     board.addColumn("Todo", true);
     board.addColumn("Doing", true);
     board.addColumn("Done", false);
@@ -27,5 +27,5 @@ test("Deve testar o column component", async function () {
     await wrapper.get(".card-increase-estimative").trigger("click");
     await wrapper.get(".card-increase-estimative").trigger("click");
     await wrapper.get(".card-increase-estimative").trigger("click");
-    expect(wrapper.get(".card-estimative").text()).toBe("6"); 
+    expect(wrapper.get(".card-estimative").text()).toBe("6");
 });  

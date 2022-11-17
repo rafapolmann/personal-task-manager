@@ -6,14 +6,14 @@ import Column from "./Column";
 export default class Board extends BaseEntity {
     columns: Column[];
 
-    constructor(readonly name: string) {
+    constructor(readonly idBoard: number, readonly name: string) {
         super();
         this.columns = [];
     }
 
     addColumn(columnName: string, hasEstimative: boolean) {
         this.columns.push(new Column(columnName, hasEstimative));
-        this.publish(new DomainEvent("addColumn", { idBoard: 1, name: columnName, hasEstimative }));
+        this.publish(new DomainEvent("addColumn", { idBoard: this.idBoard, name: columnName, hasEstimative }));
     }
 
     addCard(columnName: string, cardTitle: string, cardEstimative: number) {

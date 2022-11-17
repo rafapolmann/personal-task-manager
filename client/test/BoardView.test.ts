@@ -1,6 +1,6 @@
 import { mount } from "@vue/test-utils";
 import Board from "../src/entities/Board";
-import BoardService from "../src/services/BoardService";
+import BoardService, { SaveColumnInput } from "../src/services/BoardService";
 import BoardViewVue from "../src/views/BoardView.vue";
 
 function sleep(ms: number) {
@@ -14,7 +14,7 @@ function sleep(ms: number) {
 test("Deve testar o board view", async function () {
     const boardService: BoardService = {
         async getBoard(idBoard: number) {
-            const board = new Board("Projeto 1");
+            const board = new Board(1, "Projeto 1");
             board.addColumn("Todo", true);
             board.addColumn("Doing", true);
             board.addColumn("Done", false);
@@ -23,10 +23,10 @@ test("Deve testar o board view", async function () {
             board.addCard("Todo", "Atividade 3", 1);
             return board;
         },
-        saveColumn(){
-            
+        async saveColumn(column: SaveColumnInput) {
+            throw new Error("não usado neste teste");
         }
-    }; 
+    };
 
     const wrapper = mount(BoardViewVue, {
         global: {
