@@ -11,14 +11,16 @@ create table boardColumn(
     id_boardColumn serial primary key,
     id_board integer references board (id_board),
     name text,
-    has_estimative boolean
+    has_estimative boolean,
+    index integer
 );
 
 create table card(
     id_card serial primary key,
     id_boardColumn integer references boardColumn (id_boardColumn),
     title text,
-    estimative integer
+    estimative integer,
+	index integer
 ); 
 
 insert into board (name) values ( 'Projeto 1');
