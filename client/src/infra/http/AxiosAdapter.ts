@@ -2,7 +2,6 @@ import axios from "axios";
 import HttpClient from "./HttpClient";
 
 export default class AxiosAdapter implements HttpClient {
-
     async get(url: string): Promise<any> {
         const response = await axios({
             url,
@@ -19,4 +18,22 @@ export default class AxiosAdapter implements HttpClient {
         });
         return response.data;
     }
+
+    async put(url: string, data: any): Promise<any> {
+        const response = await axios({
+            url,
+            method: "put",
+            data
+        });
+        return response.data;
+    }
+
+    async delete(url: string): Promise<any> {
+        const response = await axios({
+            url,
+            method: "delete"
+        });
+        return response.data;
+    }
+
 }

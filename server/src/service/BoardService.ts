@@ -29,7 +29,7 @@ export default class BoardService {
                 output.estimative += card.estimative;
                 columnOutput.cards.push({ idCard: card.idCard, title: card.title, estimative: card.estimative });
             }
-            output.columns.push(columnOutput);
+            output.columns.push(columnOutput); 
         }
 
         return output;
@@ -42,7 +42,7 @@ type ColumnOutput = {
     estimative: number,
     hasEstimative: boolean,
     cards: {
-        idCard: number,
+        idCard?: number,
         title: string,
         estimative: number
     }[]

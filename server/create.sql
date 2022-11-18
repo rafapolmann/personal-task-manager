@@ -9,7 +9,7 @@ create table board(
 
 create table boardColumn(
     id_boardColumn serial primary key,
-    id_board integer references board (id_board),
+    id_board integer references board (id_board) on delete cascade on update cascade,
     name text,
     has_estimative boolean,
     index integer
@@ -17,7 +17,7 @@ create table boardColumn(
 
 create table card(
     id_card serial primary key,
-    id_boardColumn integer references boardColumn (id_boardColumn),
+    id_boardColumn integer references boardColumn (id_boardColumn) on delete cascade on update cascade,
     title text,
     estimative integer,
 	index integer
