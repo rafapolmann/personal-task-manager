@@ -4,9 +4,13 @@ defineProps(["board", "column", "card"]);
 
 <template>
     <div class="card">
-        <span class="card-title">{{ card.title }}</span> <span class="card-estimative">{{ card.estimative }}</span>
+        <div class="card-title">
+            {{ card.idCard }} {{ card.title }} <span class="card-estimative">{{ card.estimative }}</span>
+        </div>
         <br />
-        <button class="card-increase-estimative" @click="board?.increaseEstimative(card)">+</button><button>-</button>
+        <button class="card-increase-estimative" @click="board?.increaseEstimative(column, card)">+</button>
+        <button class="card-increase-estimative" @click="board?.decreaseEstimative(column, card)">-</button>
+        <button @click="board.deleteCard(column, card.idCard)">delete</button>
     </div>
 </template>
 
@@ -14,12 +18,13 @@ defineProps(["board", "column", "card"]);
 .card {
     text-align: center;
     width: 100%;
-    height: 80px;
+    height: 85px;
     background-color: #F3E779;
     border: 1px solid #000;
-    margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+    margin-bottom: 10px;    
+}
+
+.card-title {
+    padding: 10px;
 }
 </style>
