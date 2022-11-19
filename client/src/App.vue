@@ -1,12 +1,11 @@
 <script setup lang="ts">
-//AppCompositionAPI
-
-import BoardView from './views/BoardView.vue';
+import NavComponent from './components/NavComponent.vue';
 
 </script>
 
 <template>
-  <BoardView></BoardView>
+  <NavComponent></NavComponent>
+  <RouterView></RouterView>
 </template>
 
 <style scoped>

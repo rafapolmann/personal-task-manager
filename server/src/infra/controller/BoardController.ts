@@ -52,6 +52,5 @@ export default class BoardController {
         http.route("put", "/boards/:idBoard/columns/:idColumn/cards/:idcard", async function (params: any, body: any) {
             await cardService.updateCard(body);
         });
-        /*await this.httpClient.put(`${this.baseUrl}/boards/${card.idBoard}/columns/${card.idColumn}/cards/${card.idCard}`, card);*/
     }
 }
