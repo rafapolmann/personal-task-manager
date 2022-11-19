@@ -7,7 +7,7 @@ let cardTitle = ref("");
 <template>
     <div class="card new-card">
         <input class="new-card-input" type="text" v-model="cardTitle"
-            @keypress.enter="board?.addCard(column.name, cardTitle, 0)" placeholder="Novo Card" />
+            @keypress.enter="board?.addCard(column.name, cardTitle, 0)" placeholder="Novo Cartão" />
     </div>
 </template>
 

@@ -29,4 +29,8 @@ export default class CardRepositoryDatabase implements CardRepository {
     async update(card: Card): Promise<void> {
         await this.connection.query("update card set title = $1, estimative = $2 where id_card = $3", [card.title, card.estimative, card.idCard]);
     }
+
+    async updateIdColumnAndIndex(idCard: number, idColumn: number, index: number): Promise<void> {
+        await this.connection.query("update card set id_boardColumn = $1, index = $2 where id_card = $3", [idColumn, index, idCard]);
+    }
 }

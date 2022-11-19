@@ -7,6 +7,7 @@ export default interface BoardService {
     saveCard(card: SaveCardInput): Promise<number>;
     deleteCard(idBoard: number, idColumn: number, idCard: number): Promise<void>;
     updateCard(card: UpdateCardInput): Promise<void>;
+    updatePositionMap (input: { idBoard: number, positionMap: { [idColumn: number]: number[] } }): Promise<void>;
 }
 
 export type SaveColumnInput = {
