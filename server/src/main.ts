@@ -1,3 +1,4 @@
+import AuthController from "./infra/controller/AuthController";
 import BoardController from "./infra/controller/BoardController";
 import PgPromiseConnection from "./infra/database/PgPromiseConnection";
 import ExpressAdapter from "./infra/http/ExpressAdapter";
@@ -16,5 +17,6 @@ const cardRepository = new CardRepositoryDatabase(connection);
 const boardService = new BoardService(boardRepository, columnRepository, cardRepository);
 const columnService = new ColumnService(columnRepository);
 const cardService = new CardService(cardRepository);
+new AuthController(http);
 new BoardController(http, boardService, columnService, cardService);
 http.listen(3000);

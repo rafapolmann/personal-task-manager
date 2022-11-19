@@ -30,3 +30,5 @@ insert into boardColumn (id_board, name, has_estimative) values (1, 'Coluna C', 
 insert into card (id_boardColumn, title, estimative) values (1, 'Atividade 1', 3);
 insert into card (id_boardColumn, title, estimative) values (1, 'Atividade 2', 2);
 insert into card (id_boardColumn, title, estimative) values (1, 'Atividade 3', 1);
+insert into board (name) values ('Projeto 2');
+insert into boardColumn (id_board, name, has_estimative) values (2, 'Coluna A', true);
