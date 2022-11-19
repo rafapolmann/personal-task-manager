@@ -52,5 +52,9 @@ export default class BoardController {
         http.route("put", "/boards/:idBoard/columns/:idColumn/cards/:idcard", async function (params: any, body: any) {
             await cardService.updateCard(body);
         });
+
+        http.route("post", "/boards/:idBoard/updatePositionMap", async function (params: any, body: any) {
+            await boardService.updatePositionMap(body);
+        });
     }
 }

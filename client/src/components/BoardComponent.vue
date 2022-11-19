@@ -7,7 +7,7 @@ defineProps(["board"]);
 
 <template>
     <div v-if="board">
-        <h3>{{ board.name }} <span id="estimative">{{ board.getEstimative() }}</span></h3>
+        <h3>{{ board.name }} (<span id="estimative">{{ board.getEstimative() }}</span>)</h3>
         <div class="columns">
             <div v-for="column in board.columns">
                 <ColumnComponent :board="board" :column="column"></ColumnComponent>

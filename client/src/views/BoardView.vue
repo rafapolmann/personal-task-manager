@@ -14,6 +14,9 @@ onMounted(async () => {
   const boardService = inject("boardService") as BoardService;
   const board = await boardService.getBoard(idBoard);
   data.board = board;
+  board.on("updatePositionMap", async function (event: DomainEvent) {
+		await boardService.updatePositionMap(event.data);
+	});
   board.on("addColumn", async function (event: DomainEvent) {
     const idColumn = await boardService.saveColumn(event.data);
     event.data.column.idColumn = idColumn;

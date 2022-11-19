@@ -4,8 +4,8 @@ defineProps(["board", "column"]);
 </script>
 
 <template>
-    <div class="column">
-        <h3>{{ column.name }} <span class="estimative">{{ column.getEstimative() }}</span></h3>
+    <div class="column" @dragover="board.moveCard(column)">
+        <h3>{{ column.name }} (<span class="estimative">{{ column.getEstimative() }}</span>)</h3>
         <button @click="board.deleteColumn(column.idColumn)">delete</button>
         <hr />
         <div v-for="card in column.cards">

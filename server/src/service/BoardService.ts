@@ -29,10 +29,18 @@ export default class BoardService {
                 output.estimative += card.estimative;
                 columnOutput.cards.push({ idCard: card.idCard, title: card.title, estimative: card.estimative });
             }
-            output.columns.push(columnOutput); 
+            output.columns.push(columnOutput);
         }
-
         return output;
+    }
+
+    async updatePositionMap(input: { [idColumn: number]: number[] }): Promise<void> {
+        for (const idColumn in input) {
+            let index = 0;
+            for (const idCard of input[idColumn]) {
+                await this.cardRepository.updateIdColumnAndIndex(idCard, parseInt(idColumn), index++);
+            }
+        }
     }
 }
 
