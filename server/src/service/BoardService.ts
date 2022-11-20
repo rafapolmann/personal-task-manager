@@ -27,7 +27,7 @@ export default class BoardService {
             for (const card of cards) {
                 columnOutput.estimative += card.estimative;
                 output.estimative += card.estimative;
-                columnOutput.cards.push({ idCard: card.idCard, title: card.title, estimative: card.estimative });
+                columnOutput.cards.push({ idCard: card.idCard, title: card.title, estimative: card.estimative, color: card.color });
             }
             output.columns.push(columnOutput);
         }
@@ -52,7 +52,8 @@ type ColumnOutput = {
     cards: {
         idCard?: number,
         title: string,
-        estimative: number
+        estimative: number,
+        color: string
     }[]
 }
 
