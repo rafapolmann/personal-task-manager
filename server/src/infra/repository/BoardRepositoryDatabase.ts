@@ -18,9 +18,22 @@ export default class BoardRepositoryDatabase implements BoardRepository {
     }
 
     async get(idBoard: number): Promise<Board> {
-        const [boardData] = await this.connection.query("select * from board where id_board = 1", [idBoard]);
+        const [boardData] = await this.connection.query("select * from board where id_board = $1", [idBoard]);
         if (!boardData) throw new Error("Board not found");
         const board = new Board(boardData.id_board, boardData.name);
         return board;
+    }
+
+    async save(board: Board): Promise<number> {
+        const [boardData] = await this.connection.query("insert into board (name) values ($1) returning *", [board.name]);
+        return boardData.id_board;
+    }
+
+    async update(board: Board): Promise<void> {
+        await this.connection.query("update board set name = $1 where id_board = $2", [board.name, board.idBoard]);
+    }
+
+    async delete(idBoard: number): Promise<void> {
+        await this.connection.query("delete from board where id_board = $1", [idBoard]);
     }
 }

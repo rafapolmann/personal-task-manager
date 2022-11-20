@@ -1,3 +1,4 @@
+import Board from "../domain/entity/Board";
 import BoardRepository from "../domain/repository/BoardRepository";
 import CardRepository from "../domain/repository/CardRepository";
 import ColumnRepository from "../domain/repository/ColumnRepository";
@@ -7,9 +8,14 @@ export default class BoardService {
     constructor(readonly boardRepository: BoardRepository, readonly columnRepository: ColumnRepository, readonly cardRepository: CardRepository) {
     }
 
-    async getBoards(): Promise<{ idBoard: number, name: string }[]> {
+    async getBoards(): Promise<{ idBoard?: number, name: string }[]> {
         const boards = await this.boardRepository.findAll();
         return boards.map((board) => ({ idBoard: board.idBoard, name: board.name }));
+    }
+
+    async getBoardByIdBoard(idBoard: number): Promise<{ idBoard?: number, name: string }> {
+        const board = await this.boardRepository.get(idBoard);
+        return board;
     }
 
     async getBoard(idBoard: number): Promise<BoardOutput> {
@@ -32,6 +38,10 @@ export default class BoardService {
             output.columns.push(columnOutput);
         }
         return output;
+    }
+
+    async saveBoard(name: string): Promise<number> {
+        return await this.boardRepository.save(new Board(undefined, name));
     }
 
     async updatePositionMap(input: { [idColumn: number]: number[] }): Promise<void> {
@@ -58,7 +68,7 @@ type ColumnOutput = {
 }
 
 type BoardOutput = {
-    idBoard: number,
+    idBoard?: number,
     name: string,
     estimative: number,
     columns: ColumnOutput[]

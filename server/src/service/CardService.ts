@@ -11,6 +11,16 @@ export default class CardService {
         return cards;
     }
 
+    async getCard(idCard: number) {
+        const card = await this.cardRepository.get(idCard);
+        return card;
+    }
+
+    async list(title: string) {
+        const cards = await this.cardRepository.list(title);
+        return cards;
+    }
+
     async saveCard(input: SaveCardInput): Promise<number> {
         const idCard = await this.cardRepository.save(new Card(input.idColumn, undefined, input.title, input.estimative));
         return idCard;

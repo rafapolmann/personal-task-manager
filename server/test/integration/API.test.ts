@@ -1,18 +1,26 @@
 import axios from "axios";
 
 test("Deve retornar os quadros por meio da API", async function () {
+    axios.interceptors.request.use((config: any) => {
+        config.headers["Authorization"] = `Bearer 123456`;
+        return config;
+    });
     const response = await axios({
         url: "http://localhost:3000/boards",
         method: "get"
     });
     const boards = response.data;
-    expect(boards).toHaveLength(1);
+    expect(boards).toHaveLength(2);
     const [board] = boards;
     expect(board.name).toBe('Projeto 1');
     expect(board.idBoard).toBe(1);
 });
 
 test("Deve retornar um quadro por meio da API", async function () {
+    axios.interceptors.request.use((config: any) => {
+        config.headers["Authorization"] = `Bearer 123456`;
+        return config;
+    });
     const response = await axios({
         url: "http://localhost:3000/boards/1",
         method: "get"
@@ -23,6 +31,10 @@ test("Deve retornar um quadro por meio da API", async function () {
 });
 
 test("Deve retornar as colunas de um quadro por meio da API", async function () {
+    axios.interceptors.request.use((config: any) => {
+        config.headers["Authorization"] = `Bearer 123456`;
+        return config;
+    });
     const response = await axios({
         url: "http://localhost:3000/boards/1/columns",
         method: "get"
@@ -37,6 +49,10 @@ test("Deve retornar as colunas de um quadro por meio da API", async function () 
 });
 
 test("Deve salvar uma coluna por meio da API", async function () {
+    axios.interceptors.request.use((config: any) => {
+        config.headers["Authorization"] = `Bearer 123456`;
+        return config;
+    });
     const responseSave = await axios({
         url: "http://localhost:3000/boards/1/columns",
         method: "post",
@@ -60,12 +76,16 @@ test("Deve salvar uma coluna por meio da API", async function () {
 });
 
 test("Deve retornar os cartões de uma coluna por meio da API", async function () {
+    axios.interceptors.request.use((config: any) => {
+        config.headers["Authorization"] = `Bearer 123456`;
+        return config;
+    });
     const response = await axios({
         url: "http://localhost:3000/boards/1/columns/1/cards",
         method: "get"
     });
     const cards = response.data;
-    expect(cards).toHaveLength(3);
+    expect(cards).toHaveLength(6);
     const [card1, card2, card3] = cards;
     expect(card1.title).toBe('Atividade 1');
     expect(card2.title).toBe('Atividade 2');

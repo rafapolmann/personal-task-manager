@@ -11,7 +11,7 @@ test("Deve listar os quadros", async function () {
     const cardRepository = new CardRepositoryDatabase(connection);
     const boardService = new BoardService(boardRepository, columnRepository, cardRepository);
     const boards = await boardService.getBoards();
-    expect(boards).toHaveLength(1);
+    expect(boards).toHaveLength(2);
     const [board] = boards;
     expect(board.name).toBe("Projeto 1");
     await connection.close();
@@ -30,10 +30,10 @@ test("Deve retonar um quadro", async function () {
     expect(a.name).toBe("Coluna A");
     expect(b.name).toBe("Coluna B");
     expect(c.name).toBe("Coluna C");
-    expect(a.estimative).toBe(6);
+    expect(a.estimative).toBe(19);
     expect(b.estimative).toBe(0);
     expect(c.estimative).toBe(0);
-    expect(board.estimative).toBe(6);
+    expect(board.estimative).toBe(19);
     const [card1, card2, card3] = a.cards;
     expect(card1.title).toBe("Atividade 1");
     expect(card1.estimative).toBe(3);

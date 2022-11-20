@@ -22,7 +22,7 @@ test("Deve testar o column component", async function () {
         }
     });
 
-    expect(wrapper.get(".card-title").text()).toBe("Atividade 1");
+    expect(wrapper.get(".card-title").text()).toBe("Atividade 1 (3)");
     expect(wrapper.get(".card-estimative").text()).toBe("3");
     await wrapper.get(".card-increase-estimative").trigger("click");
     await wrapper.get(".card-increase-estimative").trigger("click");
