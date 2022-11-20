@@ -46,8 +46,8 @@ export default class BoardServiceHttp implements BoardService {
     async updateCard(card: UpdateCardInput): Promise<void> {
         await this.httpClient.put(`${this.baseUrl}/boards/${card.idBoard}/columns/${card.idColumn}/cards/${card.idCard}`, card);
     }
-    
+
     async updatePositionMap(input: { idBoard: number; positionMap: { [idColumn: number]: number[]; }; }): Promise<void> {
-		await this.httpClient.post(`${this.baseUrl}/boards/${input.idBoard}/updatePositionMap`, input.positionMap);
-	}	
+        await this.httpClient.post(`${this.baseUrl}/boards/${input.idBoard}/updatePositionMap`, input.positionMap);
+    }
 }
