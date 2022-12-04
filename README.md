@@ -176,4 +176,4 @@ yarn test
 
 ## License
 
-This project is licensed under the MIT License - see [LICENSE.md](https://github.com/rafapolmann/personal-task-manager/blob/master/LICENSE.md) for details.
+This project is licensed under the MIT License - see [LICENSE.md](https://github.com/rafapolmann/personal-task-manager/blob/master/LICENSE) for details.
