@@ -13,7 +13,7 @@ The purpose of this project was the study of it's used components and frameworks
 ### Back-end
 1. REST API
     1. express
-2. GraphQL
+2. GraphQL ***(just as example)***
     1. apollo-server
 3. Automated Tests
     1. jest
